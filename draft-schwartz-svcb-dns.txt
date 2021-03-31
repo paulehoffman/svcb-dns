@@ -4,8 +4,8 @@
 
 add                                                          B. Schwartz
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                        17 February 2021
-Expires: 21 August 2021
+Intended status: Standards Track                           31 March 2021
+Expires: 2 October 2021
 
 
                 Service Binding Mapping for DNS Servers
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 August 2021.
+   This Internet-Draft will expire on 2 October 2021.
 
 Copyright Notice
 
@@ -119,7 +119,8 @@ Table of Contents
    Names are formed using Port-Prefix Naming ([SVCB] Section 2.3).  For
    example, a DNS service identified by the name "dns1.example.com" and
    (unusually) the non-default port number 5353 would be represented as
-   "_5353._dns.dns1.example.com.".
+   "_5353._dns.dns1.example.com.".  A DNS service using the default port
+   number of 53 would be represented as "_dns.dns1.example.com.".
 
 4.  Applicable existing SvcParamKeys
 
@@ -308,44 +309,44 @@ Table of Contents
 
    [DOH]      Hoffman, P. and P. McManus, "DNS Queries over HTTPS
               (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
-              <https://www.rfc-editor.org/info/rfc8484>.
+              <https://datatracker.ietf.org/doc/html/rfc8484>.
 
    [DOT]      Hu, Z., Zhu, L., Heidemann, J., Mankin, A., Wessels, D.,
               and P. Hoffman, "Specification for DNS over Transport
               Layer Security (TLS)", RFC 7858, DOI 10.17487/RFC7858, May
-              2016, <https://www.rfc-editor.org/info/rfc7858>.
+              2016, <https://datatracker.ietf.org/doc/html/rfc7858>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
+              <https://datatracker.ietf.org/doc/html/rfc2119>.
 
    [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
               and D. Orchard, "URI Template", RFC 6570,
               DOI 10.17487/RFC6570, March 2012,
-              <https://www.rfc-editor.org/info/rfc6570>.
+              <https://datatracker.ietf.org/doc/html/rfc6570>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+              May 2017, <https://datatracker.ietf.org/doc/html/rfc8174>.
 
    [SVCB]     Schwartz, B. M., Bishop, M., and E. Nygren, "Service
               binding and parameter specification via the DNS (DNS SVCB
               and HTTPS RRs)", Work in Progress, Internet-Draft, draft-
               ietf-dnsop-svcb-https-02, 2 November 2020,
-              <https://www.ietf.org/archive/id/draft-ietf-dnsop-svcb-
-              https-02.txt>.
+              <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-
+              svcb-https-02.txt>.
 
 11.2.  Informative References
 
    [Attrleaf] Crocker, D., "Scoped Interpretation of DNS Resource
               Records through "Underscored" Naming of Attribute Leaves",
               BCP 222, RFC 8552, DOI 10.17487/RFC8552, March 2019,
-              <https://www.rfc-editor.org/info/rfc8552>.
+              <https://datatracker.ietf.org/doc/html/rfc8552>.
 
    [DNSURI]   Josefsson, S., "Domain Name System Uniform Resource
               Identifiers", RFC 4501, DOI 10.17487/RFC4501, May 2006,
-              <https://www.rfc-editor.org/info/rfc4501>.
+              <https://datatracker.ietf.org/doc/html/rfc4501>.
 
 Appendix A.  Mapping Summary
 
