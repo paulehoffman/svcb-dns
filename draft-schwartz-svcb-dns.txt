@@ -201,7 +201,7 @@ Table of Contents
 
 8.  Examples
 
-   *  A resolver at "simple.example" that support DNS over TLS on port
+   *  A resolver at "simple.example" that supports DNS over TLS on port
       853 (implicitly, as this is the default protocol and its default
       port):
 
