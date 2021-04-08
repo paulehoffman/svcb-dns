@@ -207,6 +207,10 @@ Table of Contents
 
       _dns.simple.example. 7200 IN SVCB 1 simple.example.
 
+   *  A resolver at "doh.example" that supports only DNS over HTTPS (DNS
+      over TLS is disabled): _dns.doh.example. 7200 IN SVCB 1
+      doh.example. ( no-default-alpn alpn=h2 dohpath=/dns-query{?dns} )
+
    *  A resolver at "resolver.example" that supports
 
       -  DNS over TLS on "resolver.example" ports 853 (implicit in
