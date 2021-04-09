@@ -128,7 +128,7 @@ Table of Contents
 
    This key indicates the set of supported protocols ([SVCB]
    Section 6.1).  There is no default protocol, so the "no-default-alpn"
-   key does not apply.
+   key does not apply, and the "alpn" key MUST be present.
 
    If the protocol set contains any HTTP versions (e.g. "h2", "h3"),
    then the record indicates support for DNS over HTTPS [DOH], and the
@@ -359,28 +359,30 @@ Appendix A.  Mapping Summary
    This table serves as a non-normative summary of the DNS mapping for
    SVCB.
 
-       +=================+========================================+
-       +=================+========================================+
-       | *Mapped scheme* | "dns"                                  |
-       +-----------------+----------------------------------------+
-       | *RR type*       | SVCB (64)                              |
-       +-----------------+----------------------------------------+
-       | *Name prefix*   | "_dns" for port 53, else "_$PORT._dns" |
-       +-----------------+----------------------------------------+
-       | *Automatically  | port                                   |
-       | Mandatory Keys* |                                        |
-       +-----------------+----------------------------------------+
-       | *Special        | Supports all HTTPS RR SvcParamKeys     |
-       | behaviors*      |                                        |
-       +-----------------+----------------------------------------+
-       |                 | Overrides the HTTPS RR for DoH         |
-       +-----------------+----------------------------------------+
-       |                 | Default port is per-transport          |
-       +-----------------+----------------------------------------+
-       |                 | No encrypted -> cleartext fallback     |
-       +-----------------+----------------------------------------+
+       +==================+========================================+
+       +==================+========================================+
+       | *Mapped scheme*  | "dns"                                  |
+       +------------------+----------------------------------------+
+       | *RR type*        | SVCB (64)                              |
+       +------------------+----------------------------------------+
+       | *Name prefix*    | "_dns" for port 53, else "_$PORT._dns" |
+       +------------------+----------------------------------------+
+       | *Mandatory keys* | alpn                                   |
+       +------------------+----------------------------------------+
+       | *Automatically   | port                                   |
+       | Mandatory Keys*  |                                        |
+       +------------------+----------------------------------------+
+       | *Special         | Supports all HTTPS RR SvcParamKeys     |
+       | behaviors*       |                                        |
+       +------------------+----------------------------------------+
+       |                  | Overrides the HTTPS RR for DoH         |
+       +------------------+----------------------------------------+
+       |                  | Default port is per-transport          |
+       +------------------+----------------------------------------+
+       |                  | No encrypted -> cleartext fallback     |
+       +------------------+----------------------------------------+
 
-                                 Table 3
+                                  Table 3
 
 Acknowledgments
 
