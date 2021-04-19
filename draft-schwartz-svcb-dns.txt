@@ -4,8 +4,8 @@
 
 add                                                          B. Schwartz
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                            8 April 2021
-Expires: 10 October 2021
+Intended status: Standards Track                           19 April 2021
+Expires: 21 October 2021
 
 
                 Service Binding Mapping for DNS Servers
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 October 2021.
+   This Internet-Draft will expire on 21 October 2021.
 
 Copyright Notice
 
@@ -68,7 +68,7 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Name form
    4.  Applicable existing SvcParamKeys
-     4.1.  alpn and no-default-alpn
+     4.1.  alpn
      4.2.  port
      4.3.  Other applicable SvcParamKeys
    5.  New SvcParamKeys
@@ -124,11 +124,11 @@ Table of Contents
 
 4.  Applicable existing SvcParamKeys
 
-4.1.  alpn and no-default-alpn
+4.1.  alpn
 
-   These keys indicate the set of supported protocols ([SVCB]
-   Section 6.1).  The default protocol is "dot", indicating support for
-   DNS over TLS [DOT].
+   This key indicates the set of supported protocols ([SVCB]
+   Section 6.1).  There is no default protocol, so the "no-default-alpn"
+   key does not apply, and the "alpn" key MUST be present.
 
    If the protocol set contains any HTTP versions (e.g. "h2", "h3"),
    then the record indicates support for DNS over HTTPS [DOH], and the
@@ -141,17 +141,15 @@ Table of Contents
    on their default ports.  Note that in this configuration, ALPN
    negotiation does not defend against cross-protocol downgrade attacks.
 
-   These keys are automatically mandatory if present.  (See Section 7 of
-   [SVCB] for the definition of "automatically mandatory".)
-
 4.2.  port
 
    This key is used to indicate the target port for connection (([SVCB]
    Section 6.2)).  If omitted, the client SHALL use the default port for
-   each transport protocol (853 for DNS over TLS, 443 for DNS over
+   each transport protocol (853 for DNS over TLS [DOT], 443 for DNS over
    HTTPS).
 
-   This key is automatically mandatory if present.
+   This key is automatically mandatory if present.  (See Section 7 of
+   [SVCB] for the definition of "automatically mandatory".)
 
 4.3.  Other applicable SvcParamKeys
 
@@ -202,14 +200,13 @@ Table of Contents
 8.  Examples
 
    *  A resolver at "simple.example" that supports DNS over TLS on port
-      853 (implicitly, as this is the default protocol and its default
-      port):
+      853 (implicitly, as this is its default port):
 
-      _dns.simple.example. 7200 IN SVCB 1 simple.example.
+      _dns.simple.example. 7200 IN SVCB 1 alpn=dot simple.example.
 
    *  A resolver at "doh.example" that supports only DNS over HTTPS (DNS
       over TLS is disabled): _dns.doh.example. 7200 IN SVCB 1
-      doh.example. ( no-default-alpn alpn=h2 dohpath=/dns-query{?dns} )
+      doh.example. ( alpn=h2 dohpath=/dns-query{?dns} )
 
    *  A resolver at "resolver.example" that supports
 
@@ -224,10 +221,9 @@ Table of Contents
          (record 3):
 
          $ORIGIN resolver.example.
-         _dns 7200 IN SVCB 1 @ alpn=h2,h3 dohpath=/dns-query{?dns}
-                      SVCB 2 @ port=8530
-                      SVCB 3 fooexp ( port=5353
-           alpn=foo no-default-alpn foo-info=... )
+         _dns 7200 IN SVCB 1 @ alpn=dot,h2,h3 dohpath=/dns-query{?dns}
+                      SVCB 2 @ alpn=dot port=8530
+                      SVCB 3 fooexp port=5353 alpn=foo foo-info=...
 
    *  A nameserver at "ns.example" whose service configuration is
       published on a different domain:
@@ -371,11 +367,10 @@ Appendix A.  Mapping Summary
        +-----------------+----------------------------------------+
        | *Name prefix*   | "_dns" for port 53, else "_$PORT._dns" |
        +-----------------+----------------------------------------+
-       | *Automatically  | "port", "no-default-alpn"              |
-       | Mandatory Keys* |                                        |
+       | *Required keys* | alpn                                   |
        +-----------------+----------------------------------------+
-       | *SvcParam       | "alpn": ["dot"]                        |
-       | defaults*       |                                        |
+       | *Automatically  | port                                   |
+       | Mandatory Keys* |                                        |
        +-----------------+----------------------------------------+
        | *Special        | Supports all HTTPS RR SvcParamKeys     |
        | behaviors*      |                                        |
