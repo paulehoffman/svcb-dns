@@ -4,8 +4,8 @@
 
 add                                                          B. Schwartz
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                            9 April 2021
-Expires: 11 October 2021
+Intended status: Standards Track                           19 April 2021
+Expires: 21 October 2021
 
 
                 Service Binding Mapping for DNS Servers
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 October 2021.
+   This Internet-Draft will expire on 21 October 2021.
 
 Copyright Notice
 
@@ -359,30 +359,30 @@ Appendix A.  Mapping Summary
    This table serves as a non-normative summary of the DNS mapping for
    SVCB.
 
-       +==================+========================================+
-       +==================+========================================+
-       | *Mapped scheme*  | "dns"                                  |
-       +------------------+----------------------------------------+
-       | *RR type*        | SVCB (64)                              |
-       +------------------+----------------------------------------+
-       | *Name prefix*    | "_dns" for port 53, else "_$PORT._dns" |
-       +------------------+----------------------------------------+
-       | *Mandatory keys* | alpn                                   |
-       +------------------+----------------------------------------+
-       | *Automatically   | port                                   |
-       | Mandatory Keys*  |                                        |
-       +------------------+----------------------------------------+
-       | *Special         | Supports all HTTPS RR SvcParamKeys     |
-       | behaviors*       |                                        |
-       +------------------+----------------------------------------+
-       |                  | Overrides the HTTPS RR for DoH         |
-       +------------------+----------------------------------------+
-       |                  | Default port is per-transport          |
-       +------------------+----------------------------------------+
-       |                  | No encrypted -> cleartext fallback     |
-       +------------------+----------------------------------------+
+       +=================+========================================+
+       +=================+========================================+
+       | *Mapped scheme* | "dns"                                  |
+       +-----------------+----------------------------------------+
+       | *RR type*       | SVCB (64)                              |
+       +-----------------+----------------------------------------+
+       | *Name prefix*   | "_dns" for port 53, else "_$PORT._dns" |
+       +-----------------+----------------------------------------+
+       | *Required keys* | alpn                                   |
+       +-----------------+----------------------------------------+
+       | *Automatically  | port                                   |
+       | Mandatory Keys* |                                        |
+       +-----------------+----------------------------------------+
+       | *Special        | Supports all HTTPS RR SvcParamKeys     |
+       | behaviors*      |                                        |
+       +-----------------+----------------------------------------+
+       |                 | Overrides the HTTPS RR for DoH         |
+       +-----------------+----------------------------------------+
+       |                 | Default port is per-transport          |
+       +-----------------+----------------------------------------+
+       |                 | No encrypted -> cleartext fallback     |
+       +-----------------+----------------------------------------+
 
-                                  Table 3
+                                 Table 3
 
 Acknowledgments
 
