@@ -4,8 +4,8 @@
 
 add                                                          B. Schwartz
 Internet-Draft                                                Google LLC
-Intended status: Standards Track                           19 April 2021
-Expires: 21 October 2021
+Intended status: Standards Track                           20 April 2021
+Expires: 22 October 2021
 
 
                 Service Binding Mapping for DNS Servers
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 October 2021.
+   This Internet-Draft will expire on 22 October 2021.
 
 Copyright Notice
 
@@ -202,7 +202,7 @@ Table of Contents
    *  A resolver at "simple.example" that supports DNS over TLS on port
       853 (implicitly, as this is its default port):
 
-      _dns.simple.example. 7200 IN SVCB 1 alpn=dot simple.example.
+      _dns.simple.example. 7200 IN SVCB 1 simple.example. alpn=dot
 
    *  A resolver at "doh.example" that supports only DNS over HTTPS (DNS
       over TLS is disabled): _dns.doh.example. 7200 IN SVCB 1
